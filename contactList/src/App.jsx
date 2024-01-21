@@ -1,12 +1,19 @@
-import React from 'react';
+// src/App.jsx
+import React, { useState } from 'react';
 import './App.css';
+import ContactList from './components/ContactList';
+import SelectedContact from './components/SelectedContact';
 
-function App() {
+export default function App() {
+  const [selectedContactId, setSelectedContactId] = useState(null);
+
   return (
-    <div>
-      {/* Your components will go here */}
-    </div>
+    <>
+      {selectedContactId ? (
+        <SelectedContact selectedContactId={selectedContactId} setSelectedContactId={setSelectedContactId} />
+      ) : (
+        <ContactList setSelectedContactId={setSelectedContactId} />
+      )}
+    </>
   );
 }
-
-export default App;
